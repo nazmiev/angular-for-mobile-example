@@ -1,0 +1,33 @@
+<main class="main">
+  <div class="content">
+    <article>
+      <app-svg-icon name="angular" />
+      <h1>Привет!</h1>
+      <p>Поздравляю!</p>
+      <p>Ты запустил desktop версию. 🎉</p>
+      <p>Теперь нажми F12, потом ctrl+shift+m, потом F5</p>
+    </article>
+    <hr class="divider"/>
+    <div class="right-side">
+      <div class="pill-group">
+        @for (item of [ 
+        { title: 'Мой LinkedIn', link: 'https://www.linkedin.com/in/roman-nazmiev-45425941' }, 
+        { title: 'Моя телега', link: 'https://t.me/roma_nazmiev' }, 
+        { title: 'Мой ВК', link: 'https://vk.com/nazmiev' }, 
+        { title: 'Мой HH', link: 'https://tomsk.hh.ru/resume/f451e746ff09d139b90039ed1f37387247516e' }, 
+        { title: 'Мой хабр', link: 'https://career.habr.com/roma_nazmiev' }, ];
+        track item.title) {
+        <a class="pill" [href]="item.link" target="_blank" rel="noopener">
+          <span>{{ item.title }}</span>
+          <app-svg-icon name="link" />
+        </a>
+        }
+      </div>
+      <div class="social-links">
+        <a href="http://github.com/nazmiev">
+          <app-svg-icon name="github" />
+        </a>
+      </div>
+    </div>
+  </div>
+</main>

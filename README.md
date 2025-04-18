@@ -1,59 +1,70 @@
-# AngularForMobileExample
+# Как мы создали нативную мобильную версию для Angular-приложения
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.7.
+## Исходная задача
 
-## Development server
+Наша команда разрабатывала трекер бизнес-процессов на базе Angular.
 
-To start a local development server, run:
+Стояла задача создать удобную мобильную версию приложения, особенно для модуля визуализации диаграмм процессов.
 
-```bash
-ng serve
-```
+## Анализ альтернатив
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Я исследовал несколько подходов:
 
-## Code scaffolding
+**Вариант 1: React Native / Flutter**
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Плюсы: нативное исполнение
+    
+- Минусы: риск проблем с публикацией в магазинах приложений, необходимость переписывать диаграммы с нуля
+    
 
-```bash
-ng generate component component-name
-```
+**Вариант 2: PWA / Мобильная версия**
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Плюсы: кроссплатформенность
+    
+- Минусы: менее нативное поведение
+    
 
-```bash
-ng generate --help
-```
+После оценки всех факторов руководство приняло решение реализовать второй вариант.
 
-## Building
+## Предложенное решение
 
-To build the project run:
+Я разработал архитектурный подход для создания нативной мобильной версии в Angular:
 
-```bash
-ng build
-```
+- Создание базовой директивы с общей логикой управления
+    
+- Наследование директивы в двух версиях компонентов: мобильной и десктопной
+    
+- Централизованное тестирование общей логики в директиве
+    
+- Разделение специфичных тестов по соответствующим компонентам
+    
+- Автоматическое определение и подгрузка нужной версии компонента
+    
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Реализация
 
-## Running unit tests
+В рамках каждой пользовательской истории мы выполняли:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+1. Разработку директивы с общей логикой и тестами
+    
+2. Создание десктопной версии компонента со специфичными тестами
+    
+3. Разработку мобильной версии компонента с переиспользуемыми элементами
+    
+4. Написание мобильных тестов
+    
 
-```bash
-ng test
-```
 
-## Running end-to-end tests
+## Результаты
 
-For end-to-end (e2e) testing, run:
+Нам удалось достичь ожидаемого поведения приложения. 
 
-```bash
-ng e2e
-```
+Особое внимание уделили обработке жестов: свайпы обрабатываются специальной директивой, привязанной к контейнеру, что позволяет эффективно реагировать на пользовательские действия.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Демонстрация
 
-## Additional Resources
+Для наглядности решения я создал этот MVP, демонстрирующий описанную архитектуру.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Буду рад обсудить ваш опыт в подобных задачах и услышать предложения по улучшению решения!
+
+t.me/roma_nazmiev
